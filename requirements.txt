@@ -1,0 +1,9 @@
+speechrecognition==3.10.0
+pyttsx3==2.90
+fuzzywuzzy==0.18.0
+num2words==0.5.13
+pycaw==20230407
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
