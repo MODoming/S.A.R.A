@@ -2,6 +2,20 @@
 
 SARA es un asistente de voz para Windows desarrollado en Python, capaz de reconocer comandos de voz y responder a preguntas mediante síntesis de voz.
 
+## Presentación del Proyecto: S.A.R.A.
+
+Estoy desarrollando SARA, un proyecto inicial que tiene como objetivo aprender y experimentar con inteligencia artificial de manera autodidacta. SARA es un sistema de asistencia automatizada que utiliza IA para brindar respuestas a los usuarios y realizar recomendaciones personalizadas, con el fin de mejorar la experiencia de interacción digital.
+
+Este proyecto está en sus primeras fases, y poco a poco iré agregando nuevas funcionalidades y habilidades. La idea es desarrollar una plataforma que sea capaz de asistir a los usuarios de manera eficiente, adaptándose a sus consultas y ofreciendo recomendaciones útiles basadas en su comportamiento e interacción con el sistema.
+
+# Características iniciales del proyecto:
+* Asistencia automatizada: SARA ofrece respuestas iniciales a preguntas comunes, utilizando procesamiento de lenguaje natural para interpretar las consultas.
+* Recomendaciones personalizadas: Aunque en sus primeras fases, el sistema busca brindar sugerencias basadas en el contexto de las interacciones.
+* Aprendizaje continuo: El sistema mejora con el tiempo mediante el aprendizaje de interacciones pasadas, permitiendo que se ajuste a las necesidades de los usuarios.
+* Desarrollo progresivo: Actualmente, el proyecto está en desarrollo y en el futuro se agregarán más funciones y capacidades a medida que aprenda y perfeccione sus habilidades.
+
+Este proyecto es una excelente oportunidad para seguir aprendiendo sobre IA, mientras construyo una herramienta útil que podría aplicarse a distintos ámbitos en el futuro. Mi objetivo es que SARA evolucione de manera orgánica, agregando valor tanto a mi aprendizaje como a posibles implementaciones futuras.
+
 ## 📌 Características
 - Reconocimiento de voz con `speech_recognition`
 - Respuestas habladas con `pyttsx3`
