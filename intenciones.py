@@ -173,17 +173,29 @@ intenciones = [
     ("¿Puedes darme un consejo?", "pregunta_general"),
 ]
 
-respuestas = {
+preguntas = {
     "¿Quién eres?": ["quién eres", "quien eres", "quien sos", "quién sos", "vos quien sos", "tu quien eres"],
     "¿Qué puedes hacer?": ["qué sabes hacer", "cuáles son tus habilidades", "qué funciones tienes"],
     "Escuchar música": ["quiero escuchar música", "reproducir una canción", "lista de reproducción"],
-    "Volumen": ["subir volumen", "bajar volumen", "ajustar volumen"],
+    "Queen": ["queen", "cuin", "kuin"],
+    "Volumen": ["subir volumen", "bajar volumen", "ajustar volumen", "volúmen", "Subir volumen"],
     "Apagar": ["apagar la computadora", "apagar windows", "cerrar el sistema"],
-    "Equivocado": ["fue un error", "me confundí", "no quería molestarte", "perdón"],
-    "Calendario": ["consultar calendario", "qué eventos tengo", "mostrar calendario"],
-    "Saludo": ["hola sara", "hola sarah", "sara", "ayúdame sara", "sarah ayudame", "sara estás ahí"],
-    "Despedida": ["chau sara", "adiós sara", "hasta luego", "gracias por tu ayuda"],
-    "Visitas": ["tenemos visitas", "vinieron a visitarnos", "saluda a nuestros invitados"]
+    "Alago": ["Que linda oficina", "Muy linda oficina", "Está buena la oficina"],
+    "Equivocado": ["fue un error", "me confundí", "no quería molestarte", "perdón", "perdon me equivoque", "Fue un error", "Me confundí", "No queria molestarte"],
+    "Calendario": ["consultar calendario", "qué eventos tengo", "mostrar calendario", "Calendario"],
+    "Saludo": ["hola sara", "hola sarah", "sara", "ayúdame sara", "sarah ayudame", "sara estás ahí", "¿sara estas ahi?", "okay sara", "sara necesito tu ayuda"],
+    "Despedida": ["chau sara", "adiós sara", "hasta luego", "gracias por tu ayuda", "chau sara, gracias por tu ayuda", "muchas gracias por tu ayuda, hasta mañana", "adiós"],
+    "Visitas": ["tenemos visitas", "vinieron a visitarnos", "saluda a nuestros invitados", "saluda a nuestors invitados"],
+    "Suspension": ["iniciar protocolo de suspensión", "activar el protocolo de suspensión", "me tengo que retirar", "en breve vuelvo", "en un rato vuelvo"],
+    "Bloquear pantalla": ["bloquear pantalla", "necesito que bloquees la pantalla", "pantalla bloqueada"],
+    "hola sara": ["hola sarah", "hola sara", "sara", "ayudame sara", "sarah ayudame", "¿sara estas ahi?", "Sara necesito tu ayuda", "okay sara", "sara estas ahí"],
+    "Clima": ["¿cómo está el clima?", "qué temperatura hace", "¿va a llover hoy?", "pronóstico del tiempo"],
+    "Chistes": ["cuéntame un chiste", "quiero reírme", "dime algo gracioso"],
+    "Recordatorios": ["crea un recordatorio", "recuérdame algo", "programar un recordatorio"],
+    "Noticias": ["¿qué noticias hay hoy?", "infórmame sobre las noticias", "resumen de noticias"],
+    "Hora": ["¿qué hora es?", "dame la hora", "hora actual"],
+    "Fecha": ["¿qué día es hoy?", "dame la fecha", "fecha actual"]
+
     # Agrega más preguntas y variantes aquí "pregunta": ["variable de pregunta"],
 }
 
@@ -194,7 +206,7 @@ intenciones.extend([
     ("Agendar una reunión", "Crear evento"),
 ])
 
-respuestas.update({
+preguntas.update({
     "Calendario": "Voy a revisar tu agenda.",
     "Crear evento": "Voy a ayudarte a crear un evento.",
 })

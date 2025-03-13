@@ -9,6 +9,10 @@ SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 TOKEN_FILE = 'token.json'
 CREDENTIALS_FILE = 'credentials.json'
 
+if not os.path.exists("credentials.json"):
+    print("Error: No se encontró el archivo credentials.json")
+
+
 def obtener_credenciales():
     creds = None
     if os.path.exists(TOKEN_FILE):

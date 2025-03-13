@@ -3,9 +3,11 @@ import pyttsx3
 import os
 from funciones import *
 from Calendario import *
-from intenciones import respuestas  # Importar respuestas correctamente
+from intenciones import *  # Importar respuestas correctamente
 
 SARA = "Sistema de Asistencia y Respuestas Automatizadas."
+DB_FILE = "sara_memoria.json"
+referencia = "referencia.txt"
 
 # Inicializar reconocimiento de voz y síntesis de voz
 r = sr.Recognizer()
@@ -24,7 +26,12 @@ except IndexError:
 r.energy_threshold = 4000
 engine.setProperty('rate', 150)
 
-def escuchar():
+# Aprender desde archivo referencia.txt al inicio
+if os.path.exists(referencia):
+    aprender_desde_archivo(referencia)
+    limpiar_archivo_referencia(referencia)
+
+"""def escuchar():
     with mic as source:
         print("Escuchando...")
         try:
@@ -36,13 +43,14 @@ def escuchar():
             engine.say("Error de conexión con el reconocimiento de voz.")
             engine.runAndWait()
             return ""
-
-def responder(texto):
+"""
+def respuesta(texto):
     print(f"Usuario: {texto}")
     pregunta = detectar_pregunta(texto)
     
-    if pregunta in respuestas:
-        engine.say(respuestas[pregunta])
+    if pregunta in preguntas:
+        engine.say(preguntas[pregunta])
+
     elif pregunta == "Escuchar música":
         reproducir = listaReproduccion()
         engine.say(f"Las siguientes listas están para ser escuchadas. {', '.join(reproducir)}. Elige una")
@@ -52,6 +60,7 @@ def responder(texto):
             buscar_y_ejecutar_archivo(lista)
         else:
             engine.say("No puedo encontrar esa lista.")
+
     elif pregunta == "Volumen":
         engine.say("Dime el porcentaje de audio que quieres")
         engine.runAndWait()
@@ -59,8 +68,9 @@ def responder(texto):
         try:
             volumen = float(volumen_texto) / 100 if volumen_texto.isdigit() else int(convertir_numero(volumen_texto)) / 100
             set_volume(volumen)
-        except:
-            engine.say("No logro entender el volumen solicitado.")
+        except ValueError:
+            engine.say("Formato de volumen no válido. Intenta de nuevo.")
+
     elif pregunta == "Apagar":
         engine.say("¿Estás seguro que quieres apagar la computadora?")
         engine.runAndWait()
@@ -70,7 +80,8 @@ def responder(texto):
             os.system("shutdown -s -t 30")
         else:
             engine.say("La computadora no se apagará. Gracias por confirmar.")
-    if pregunta == "Calendario":
+
+    elif pregunta == "Calendario":
         eventos = obtener_eventos()
         if eventos:
             engine.say("Estos son tus próximos eventos: " + ", ".join(eventos))
@@ -104,16 +115,29 @@ def responder(texto):
             else:
                 engine.say("Hubo un problema al crear el evento.")
         except ValueError:
-            engine.say("Formato de fecha incorrecto. Intenta de nuevo.")
-        
+            engine.say("Formato de fecha incorrecto. Intenta de nuevo.")        
         engine.runAndWait()
+
     else:
-        engine.say("Lo lamento, todavía no tengo respuestas para eso.")
+        respuesta_nlp = responder(texto)
+        engine.say(respuesta_nlp)
+        if respuesta_nlp == "No sé la respuesta aún. ¿Me enseñas?":
+            engine.runAndWait()
+            nueva_respuesta = escuchar()
+            if nueva_respuesta:
+                aprender(texto, nueva_respuesta)
+                engine.say("Gracias, ahora lo recordaré.")
+    
     engine.runAndWait()
 
-while detect_keyword(keyword):
-    engine.say("¿En qué te puedo ayudar?")
-    engine.runAndWait()
-    texto = escuchar()
-    if texto:
-        responder(texto)
+while True:  # Bucle infinito para que siga escuchando
+    try:
+        if detect_keyword(keyword):  # Solo responde si detecta la clave
+            engine.say("¿En qué te puedo ayudar?")
+            engine.runAndWait()
+            texto = escuchar()
+            if texto:
+                respuesta(texto)
+    except KeyboardInterrupt:
+        print("Saliendo del asistente.")
+        break  # Permite salir con Ctrl+C en terminal
