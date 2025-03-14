@@ -1,5 +1,5 @@
 # Intenciones de accion
-intenciones = [
+"""intenciones = [
     ("Hola, ¿cómo estás?", "saludo"),
     ("Buenos días, ¿qué tal?", "saludo"),
     ("Hola, ¿cómo va todo?", "saludo"),
@@ -171,7 +171,14 @@ intenciones = [
     ("¿Cuántos años tienes?", "pregunta_general"),
     ("¿Cuál es tu programación?", "pregunta_general"),
     ("¿Puedes darme un consejo?", "pregunta_general"),
-]
+]"""
+INTENCIONES = {
+    "pregunta": ["qué", "cómo", "por qué", "cuándo", "dónde", "quién", "cuál", "pregunta"],
+    "comando": ["abre", "reproduce", "enciende", "apaga", "bloquea", "busca", "inicia"],
+    "saludo": ["hola", "buen día", "qué tal", "buenas tardes"],
+    "despedida": ["chau", "adiós", "hasta luego", "nos vemos"],
+    "alago": ["gracias", "muy bien", "me gusta", "eres genial", "qué bueno", "excelente"]
+}
 
 preguntas = {
     "¿Quién eres?": ["quién eres", "quien eres", "quien sos", "quién sos", "vos quien sos", "tu quien eres"],
@@ -199,15 +206,16 @@ preguntas = {
     # Agrega más preguntas y variantes aquí "pregunta": ["variable de pregunta"],
 }
 
-intenciones.extend([
-    ("Muéstrame mi calendario", "Calendario"),
-    ("Tengo eventos hoy?", "Calendario"),
-    ("Quiero crear un evento", "Crear evento"),
-    ("Agendar una reunión", "Crear evento"),
-])
-
-preguntas.update({
-    "Calendario": "Voy a revisar tu agenda.",
-    "Crear evento": "Voy a ayudarte a crear un evento.",
-})
-
+ACCIONES = {
+    "Abrir navegador": ["abre el navegador", "quiero buscar algo", "abre chrome", "abre firefox"],
+    "Reproducir música": ["pon música", "quiero escuchar música", "reproduce una canción"],
+    "Cerrar sesión": ["cierra la sesión", "quiero cerrar sesión"],
+    "Bloquear pantalla": ["bloquea la pantalla", "quiero bloquear la computadora"],
+    "Consultar calendario": ["abre el calendario", "quiero ver mis eventos", "consulta mi agenda"],
+    "Establecer alarma": ["configura una alarma", "pon una alarma para las 7", "quiero despertarme a las 8"],
+    "Apagar computadora": ["apaga la computadora", "quiero apagar el sistema", "apaga windows"],
+    "Subir volumen": ["sube el volumen", "quiero escuchar más fuerte"],
+    "Bajar volumen": ["baja el volumen", "quiero escuchar más bajo"],
+    "Abrir Word": ["abre word", "quiero escribir un documento"],
+    "Abrir Excel": ["abre excel", "quiero hacer una tabla"]
+}

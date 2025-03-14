@@ -27,24 +27,11 @@ r.energy_threshold = 4000
 engine.setProperty('rate', 150)
 
 # Aprender desde archivo referencia.txt al inicio
-if os.path.exists(referencia):
+"""if os.path.exists(referencia):
     aprender_desde_archivo(referencia)
-    limpiar_archivo_referencia(referencia)
+    limpiar_archivo_referencia(referencia)"""
 
-"""def escuchar():
-    with mic as source:
-        print("Escuchando...")
-        try:
-            audio = r.listen(source, timeout=5)
-            return r.recognize_google(audio, language="es")
-        except sr.UnknownValueError:
-            return ""
-        except sr.RequestError:
-            engine.say("Error de conexión con el reconocimiento de voz.")
-            engine.runAndWait()
-            return ""
-"""
-def respuesta(texto):
+"""def respuesta(texto):
     print(f"Usuario: {texto}")
     pregunta = detectar_pregunta(texto)
     
@@ -128,16 +115,29 @@ def respuesta(texto):
                 aprender(texto, nueva_respuesta)
                 engine.say("Gracias, ahora lo recordaré.")
     
-    engine.runAndWait()
+    engine.runAndWait()"""
 
-while True:  # Bucle infinito para que siga escuchando
-    try:
-        if detect_keyword(keyword):  # Solo responde si detecta la clave
-            engine.say("¿En qué te puedo ayudar?")
+while detect_keyword(keyword):
+    with sr.Microphone() as source:
+        comando = escuchar()
+        if comando:
+            intencion = detectar_intencion_spacy(comando)
+
+            if intencion == "pregunta":
+                respuesta = detectar_pregunta(comando)
+                if respuesta:
+                    engine.say(respuesta)
+                else:
+                    engine.say("No tengo una respuesta para esa pregunta.")
+            
+            elif intencion == "comando":
+                accion = detectar_accion(comando)
+                if accion:
+                    ejecutar_accion(accion)
+                else:
+                    engine.say("No entendí el comando, ¿puedes repetirlo?")
+            
+            else:
+                engine.say("No entendí bien lo que dijiste, ¿podrías repetirlo?")
+
             engine.runAndWait()
-            texto = escuchar()
-            if texto:
-                respuesta(texto)
-    except KeyboardInterrupt:
-        print("Saliendo del asistente.")
-        break  # Permite salir con Ctrl+C en terminal
