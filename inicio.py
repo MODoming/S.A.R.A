@@ -1,13 +1,13 @@
 import speech_recognition as sr
 import pyttsx3
-import os
+import time
 from funciones import *
-from Calendario import *
-from intenciones import *  # Importar respuestas correctamente
+
 
 SARA = "Sistema de Asistencia y Respuestas Automatizadas."
 DB_FILE = "sara_memoria.json"
-referencia = "referencia.txt"
+TIEMPO_ESPERA = 20  # Segundos antes de volver a requerir "Hola SARA"
+
 
 # Inicializar reconocimiento de voz y síntesis de voz
 r = sr.Recognizer()
@@ -25,119 +25,51 @@ except IndexError:
 
 r.energy_threshold = 4000
 engine.setProperty('rate', 150)
+memoria = cargar_memoria()
 
-# Aprender desde archivo referencia.txt al inicio
-"""if os.path.exists(referencia):
-    aprender_desde_archivo(referencia)
-    limpiar_archivo_referencia(referencia)"""
+"""def responder(texto, memoria):
 
-"""def respuesta(texto):
-    print(f"Usuario: {texto}")
-    pregunta = detectar_pregunta(texto)
-    
-    if pregunta in preguntas:
-        engine.say(preguntas[pregunta])
+    intencion = identificar_intencion(texto)  # Detectar intención
 
-    elif pregunta == "Escuchar música":
-        reproducir = listaReproduccion()
-        engine.say(f"Las siguientes listas están para ser escuchadas. {', '.join(reproducir)}. Elige una")
-        engine.runAndWait()
-        lista = escuchar()
-        if lista:
-            buscar_y_ejecutar_archivo(lista)
+    if intencion == "pregunta":  # Si es una pregunta, buscar en la base de datos
+        respuesta = detectar_pregunta(texto, memoria)
+        if respuesta:
+            engine.say(respuesta)
         else:
-            engine.say("No puedo encontrar esa lista.")
+            engine.say("No tengo una respuesta exacta, pero puedo buscar en internet.")
+            webbrowser.open(f"https://www.google.com/search?q={texto.replace(' ', '+')}")
 
-    elif pregunta == "Volumen":
-        engine.say("Dime el porcentaje de audio que quieres")
-        engine.runAndWait()
-        volumen_texto = escuchar()
-        try:
-            volumen = float(volumen_texto) / 100 if volumen_texto.isdigit() else int(convertir_numero(volumen_texto)) / 100
-            set_volume(volumen)
-        except ValueError:
-            engine.say("Formato de volumen no válido. Intenta de nuevo.")
+    elif intencion == "comando":  # Si es un comando, buscar en acciones
+        respuesta = ejecutar_accion(texto, memoria)
+        engine.say(respuesta)
 
-    elif pregunta == "Apagar":
-        engine.say("¿Estás seguro que quieres apagar la computadora?")
-        engine.runAndWait()
-        respuesta = escuchar().lower()
-        if respuesta in ["si", "sí"]:
-            engine.say("La computadora se va a apagar. Hasta la próxima.")
-            os.system("shutdown -s -t 30")
-        else:
-            engine.say("La computadora no se apagará. Gracias por confirmar.")
-
-    elif pregunta == "Calendario":
-        eventos = obtener_eventos()
-        if eventos:
-            engine.say("Estos son tus próximos eventos: " + ", ".join(eventos))
-        else:
-            engine.say("No tienes eventos programados.")
-        engine.runAndWait()
-
-    elif pregunta == "Crear evento":
-        engine.say("Dime el título del evento.")
-        engine.runAndWait()
-        titulo = escuchar()
-
-        engine.say("Dime una breve descripción.")
-        engine.runAndWait()
-        descripcion = escuchar()
-
-        engine.say("Dime la fecha y hora de inicio en formato 'día mes año hora minutos'.")
-        engine.runAndWait()
-        fecha_inicio_texto = escuchar()
-
-        engine.say("Dime la fecha y hora de finalización.")
-        engine.runAndWait()
-        fecha_fin_texto = escuchar()
-
-        try:
-            fecha_inicio = datetime.datetime.strptime(fecha_inicio_texto, "%d %m %Y %H %M")
-            fecha_fin = datetime.datetime.strptime(fecha_fin_texto, "%d %m %Y %H %M")
-            link = crear_evento(titulo, descripcion, fecha_inicio, fecha_fin)
-            if link:
-                engine.say(f"Evento creado correctamente. Puedes verlo aquí: {link}")
-            else:
-                engine.say("Hubo un problema al crear el evento.")
-        except ValueError:
-            engine.say("Formato de fecha incorrecto. Intenta de nuevo.")        
-        engine.runAndWait()
+    elif intencion in memoria["intenciones"]:  # Si es saludo, despedida o alago
+        respuestas_aleatorias = {
+            "saludo": ["¡Hola! ¿En qué puedo ayudarte?", "Hola, ¿cómo estás?", "¡Buen día! ¿Cómo te sientes hoy?"],
+            "despedida": ["Hasta luego, que tengas un gran día.", "Adiós, aquí estaré cuando me necesites.", "Nos vemos pronto."],
+            "alago": ["¡Gracias! Estoy aquí para ayudarte.", "Me alegra que pienses eso.", "¡Aprecio tus palabras!", "Gracias, intento hacer lo mejor posible."]
+        }
+        engine.say(random.choice(respuestas_aleatorias[intencion]))
 
     else:
-        respuesta_nlp = responder(texto)
-        engine.say(respuesta_nlp)
-        if respuesta_nlp == "No sé la respuesta aún. ¿Me enseñas?":
-            engine.runAndWait()
-            nueva_respuesta = escuchar()
-            if nueva_respuesta:
-                aprender(texto, nueva_respuesta)
-                engine.say("Gracias, ahora lo recordaré.")
+        engine.say("No entendí bien lo que dijiste, ¿puedes repetirlo?")
     
-    engine.runAndWait()"""
+    engine.runAndWait()
+"""
 
-while detect_keyword(keyword):
-    with sr.Microphone() as source:
-        comando = escuchar()
-        if comando:
-            intencion = detectar_intencion_spacy(comando)
 
-            if intencion == "pregunta":
-                respuesta = detectar_pregunta(comando)
-                if respuesta:
-                    engine.say(respuesta)
-                else:
-                    engine.say("No tengo una respuesta para esa pregunta.")
-            
-            elif intencion == "comando":
-                accion = detectar_accion(comando)
-                if accion:
-                    ejecutar_accion(accion)
-                else:
-                    engine.say("No entendí el comando, ¿puedes repetirlo?")
-            
-            else:
-                engine.say("No entendí bien lo que dijiste, ¿podrías repetirlo?")
-
-            engine.runAndWait()
+while True:
+    if detect_keyword(keyword):
+        tiempo_inicio = time.time()  # Guarda el tiempo en que SARA fue activada
+        
+        while time.time() - tiempo_inicio < TIEMPO_ESPERA:
+            with sr.Microphone() as source:
+                comando = escuchar()
+                if comando:
+                    try:
+                        responder(comando, memoria)
+                        tiempo_inicio = time.time()  # Reinicia el contador si el usuario sigue hablando
+                    except Exception as e:
+                        print(f"Error en responder(): {e}")  # Muestra el error exacto en la terminal
+                        engine.say("Hubo un error interno, por favor intenta de nuevo.")
+                        engine.runAndWait()
