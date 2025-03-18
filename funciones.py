@@ -259,7 +259,7 @@ def identificar_intencion(texto, memoria): # Funcion para detectar la intencion 
         return texto
 
     mejor_intencion = "desconocido"
-    mejor_similitud = 0.8  # Aumentamos el umbral para evitar errores
+    mejor_similitud = 0.9  # Aumentamos el umbral para evitar errores
 
     for categoria, palabras_clave in memoria["intenciones"].items():
         for palabra in palabras_clave:

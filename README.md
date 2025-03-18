@@ -1,48 +1,48 @@
 # SARA - Sistema de Asistencia y Respuestas Automatizadas
 
-SARA es un asistente de voz para Windows desarrollado en Python, capaz de reconocer comandos de voz y responder a preguntas mediante síntesis de voz.
+SARA es un asistente de voz para Windows desarrollado en Python, capaz de reconocer comandos de voz, responder preguntas mediante síntesis de voz y aprender de nuevas interacciones utilizando inteligencia artificial.
 
 ## Presentación del Proyecto: S.A.R.A.
 
-Estoy desarrollando SARA, un proyecto inicial que tiene como objetivo aprender y experimentar con inteligencia artificial de manera autodidacta. SARA es un sistema de asistencia automatizada que utiliza IA para brindar respuestas a los usuarios y realizar recomendaciones personalizadas, con el fin de mejorar la experiencia de interacción digital.
+Estoy desarrollando SARA, un proyecto inicial con el objetivo de aprender y experimentar con inteligencia artificial de manera autodidacta. SARA es un sistema de asistencia automatizada que utiliza IA para brindar respuestas a los usuarios, ejecutar comandos en el sistema y realizar recomendaciones personalizadas para mejorar la experiencia de interacción digital.
 
-Este proyecto está en sus primeras fases, y poco a poco iré agregando nuevas funcionalidades y habilidades. La idea es desarrollar una plataforma que sea capaz de asistir a los usuarios de manera eficiente, adaptándose a sus consultas y ofreciendo recomendaciones útiles basadas en su comportamiento e interacción con el sistema.
+Este proyecto está en constante evolución, y se le irán agregando nuevas funcionalidades a medida que aprenda y se optimice.
 
 # Características iniciales del proyecto:
-* Asistencia automatizada: SARA ofrece respuestas iniciales a preguntas comunes, utilizando procesamiento de lenguaje natural para interpretar las consultas.
-* Recomendaciones personalizadas: Aunque en sus primeras fases, el sistema busca brindar sugerencias basadas en el contexto de las interacciones.
-* Aprendizaje continuo: El sistema mejora con el tiempo mediante el aprendizaje de interacciones pasadas, permitiendo que se ajuste a las necesidades de los usuarios.
-* Desarrollo progresivo: Actualmente, el proyecto está en desarrollo y en el futuro se agregarán más funciones y capacidades a medida que aprenda y perfeccione sus habilidades.
+* **Asistencia automatizada**: SARA ofrece respuestas a preguntas comunes mediante procesamiento de lenguaje natural.
+* **Aprendizaje continuo**: SARA puede aprender nuevas preguntas y respuestas en tiempo real, almacenándolas en su base de datos para futuras interacciones.
+* **Ejecución de comandos en Windows**: Puede abrir aplicaciones, gestionar archivos, controlar volumen, y ejecutar tareas del sistema.
+* **Integración con Google Calendar**: Permite consultar eventos y gestionar el calendario.
+* **Búsqueda en Internet**: Si no encuentra una respuesta en su base de datos, puede buscarla en Google y aprender de la información encontrada.
+* **Reconocimiento de intenciones**: Identifica si el usuario hace una pregunta, da un comando o emite un saludo, despedida o alago.
 
-Este proyecto es una excelente oportunidad para seguir aprendiendo sobre IA, mientras construyo una herramienta útil que podría aplicarse a distintos ámbitos en el futuro. Mi objetivo es que SARA evolucione de manera orgánica, agregando valor tanto a mi aprendizaje como a posibles implementaciones futuras.
+Este proyecto es una excelente oportunidad para seguir aprendiendo sobre IA mientras construyo una herramienta útil con múltiples aplicaciones.
 
 ## 📌 Características
 - Reconocimiento de voz con `speech_recognition`
 - Respuestas habladas con `pyttsx3`
 - Detección de palabras clave para activar el asistente
-- Reproducción de música desde listas de reproducción
-- Control de volumen del sistema
-- Consulta de eventos en el calendario con Google Calendar
-- Comandos para apagar la computadora
-- Base de datos de intenciones para mejorar el reconocimiento de preguntas
+- Aprendizaje de nuevas preguntas y respuestas dinámicamente
+- Ejecución de acciones en Windows (abrir aplicaciones, apagar PC, gestionar archivos, etc.)
+- Integración con Google Calendar
+- Búsqueda automática de información en Internet si la respuesta no está en la base de datos
 
 ## 🛠️ Requisitos
 Antes de ejecutar SARA, asegúrate de tener instaladas las siguientes dependencias:
 - speechrecognition
 - pyttsx3
-- fuzzywuzzy
-- num2words
-- pycaw
+- spacy
+- beautifulsoup4
+- requests
 - google-auth
 - google-auth-oauthlib
 - google-auth-httplib2
 - google-api-python-client
 
-Para ello utilice el siguiente comando:
+Para instalarlas, ejecuta el siguiente comando:
 
 ```bash
 pip install -r requirements.txt
-
 ```
 
 Además, asegúrate de tener instalado [VLC Media Player](https://www.videolan.org/) si deseas utilizar la función de reproducción de música.
@@ -63,7 +63,7 @@ Para que SARA pueda acceder a tu calendario de Google, debes generar credenciale
    ```
 2. Ejecuta el programa:
    ```bash
-   python sara_launcher.py
+   python inicio.py
    ```
 
 ## 📂 Estructura del proyecto
@@ -73,26 +73,34 @@ Para que SARA pueda acceder a tu calendario de Google, debes generar credenciale
 ├── 📄 funciones.py       # Funciones auxiliares del asistente
 ├── 📄 intenciones.py     # Diccionario de respuestas y base de datos de intenciones
 ├── 📄 calendario.py      # Módulo de integración con Google Calendar
-├── 📄 sara_launcher.py   # Script para iniciar el asistente
-├── 📄 credentials.json   # Credenciales de Google Calendar (NO compartir)
-├── 📄 token.json         # Token de autenticación de Google Calendar
+├── 📄 sara_memoria.json  # Base de datos de preguntas, respuestas y acciones
+├── 📄 credentials.json   # Credenciales de Google Calendar (NO compartido)
+├── 📄 token.json         # Token de autenticación de Google Calendar (NO compartido)
 ├── 📄 README.md          # Documentación del proyecto
 ```
 
 ## 📝 Uso
 - Di "Hola SARA" para activar el asistente.
 - Pregunta "¿Quién eres?" o "¿Qué puedes hacer?" para obtener información sobre sus capacidades.
-- Solicita "Escuchar música" para reproducir listas de reproducción guardadas.
+- Pregunta cualquier cosa, y si no conoce la respuesta, la buscará en internet y la aprenderá.
+- Solicita "Abrir Chrome" o "Abrir calculadora" para ejecutar aplicaciones.
 - Ajusta el volumen diciendo "Subir volumen" o "Bajar volumen".
 - Apaga la computadora con "Apagar la computadora".
 - Consulta tu calendario con "Muestra mi calendario" o "¿Tengo eventos hoy?".
 
 ## 📊 Base de datos de intenciones
-El módulo `intenciones.py` ahora centraliza todas las frases y respuestas para mejorar el reconocimiento de preguntas. Esto ayuda a SARA a identificar mejor las intenciones del usuario y mejorar sus respuestas.
+El módulo `sara_memoria.json` ahora almacena todas las preguntas, respuestas y comandos de SARA. Esto le permite aprender dinámicamente y mejorar su precisión en la detección de intenciones.
+
+## 🔮 Futuras mejoras
+Planeo seguir mejorando SARA con las siguientes características:
+- **Mayor integración con IA:** Implementar modelos más avanzados para mejorar el procesamiento del lenguaje natural.
+- **Compatibilidad con más aplicaciones:** Agregar integración con plataformas como Spotify, WhatsApp y asistentes de correo.
+- **Interacción contextual:** Mejorar la capacidad de recordar el contexto de la conversación.
+- **Respuestas más naturales:** Implementar generadores de texto para hacer que las respuestas sean más fluidas y humanas.
+- **Mejora en la ejecución de tareas:** Agregar la posibilidad de automatizar flujos de trabajo en el sistema.
 
 ## ⚡ Contribuciones
 Si deseas mejorar SARA, ¡eres bienvenido! Puedes hacer un fork del repositorio y enviar un pull request con tus mejoras.
 
 ## 📜 Licencia
 Este proyecto está bajo la licencia MIT.
-

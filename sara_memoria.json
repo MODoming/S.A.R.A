@@ -50,7 +50,7 @@
         }
     },
     "intenciones": {
-        "pregunta": ["qué", "cómo", "por qué", "cuándo", "dónde", "quién", "cuál", "pregunta"],
+        "pregunta": ["qué", "cómo", "por qué", "cuándo", "dónde", "quién", "cuál", "cuánto", "quienes", "puedo", "debería"],
         "comando": ["abre", "reproduce", "enciende", "apaga", "bloquea", "busca", "inicia", "configura", "ajusta", "activa", "desactiva", "cambia", "instala"],
         "saludo": ["hola", "buen día", "qué tal", "buenas tardes", "buenas noches", "hey", "saludos", "qué onda", "cómo estás"],
         "despedida": ["chau", "adiós", "hasta luego", "nos vemos", "hasta la próxima", "me retiro", "que tengas un buen día"],
