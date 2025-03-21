@@ -57,7 +57,6 @@ memoria = cargar_memoria()
     engine.runAndWait()
 """
 
-
 while True:
     if detect_keyword(keyword):
         tiempo_inicio = time.time()  # Guarda el tiempo en que SARA fue activada

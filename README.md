@@ -99,6 +99,25 @@ Planeo seguir mejorando SARA con las siguientes características:
 - **Respuestas más naturales:** Implementar generadores de texto para hacer que las respuestas sean más fluidas y humanas.
 - **Mejora en la ejecución de tareas:** Agregar la posibilidad de automatizar flujos de trabajo en el sistema.
 
+## Mejoras Recientes (última versión)
+1. **Desarrollo Autonómico de Respuestas:**  
+   SARA ahora puede generar respuestas de manera autónoma, mejorando con el tiempo gracias al uso de técnicas de procesamiento de lenguaje natural (NLP).
+
+2. **Independencia de Internet:**  
+   El proyecto ha sido optimizado para funcionar sin necesidad de una conexión a internet, permitiendo que SARA opere localmente y mantenga su funcionalidad sin depender de servicios externos.
+
+3. **Enfoque Progresivo de Aprendizaje:**  
+   SARA aprenderá progresivamente mediante el análisis de interacciones previas, lo que permite que sus respuestas se vuelvan cada vez más precisas y contextuales.
+
+4. **Integración de Modelos Avanzados de IA:**  
+   En el futuro, se planea integrar modelos más avanzados de IA para mejorar la capacidad de respuesta y la comprensión contextual de SARA.
+
+## Objetivos Futuros
+- Mejorar la precisión y rapidez de las respuestas mediante la integración de modelos de lenguaje más complejos.
+- Crear una interfaz de usuario que facilite la interacción con SARA.
+- Expandir las capacidades de SARA para realizar tareas más complejas de manera autónoma.
+
+
 ## ⚡ Contribuciones
 Si deseas mejorar SARA, ¡eres bienvenido! Puedes hacer un fork del repositorio y enviar un pull request con tus mejoras.
 

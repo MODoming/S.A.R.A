@@ -8,14 +8,18 @@ from fuzzywuzzy import fuzz
 from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 import os
 import subprocess
-import webbrowser
+from googlesearch import search
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as b
 from sympy import false
+import pickle
+import nltk
+from nltk.corpus import stopwords
 
 SARA = "Sistema de Asistencia y Respuestas Automatizadas."
 DB_FILE = "sara_memoria.json"
 nlp = spacy.load("en_core_web_md")  # Modelo de lenguaje avanzado
+nltk.download('stopwords')
 
 # Objeto de reconocimiento de voz
 r = sr.Recognizer()
@@ -31,6 +35,9 @@ try:  # Seleccionar una voz específica por su índice
     engine.setProperty('voice', voices[2].id)
 except IndexError:
     engine.setProperty('voice', voices[0].id)
+
+with open("modelo_intenciones.pkl", "rb") as f:
+    vectorizador, modelo = pickle.load(f)
 
 def cargar_memoria(): # Funcion para cargar la BBDD con el contenido del archivo JSON.
     """Carga la memora del archivo .json donde se almacenaran las intenciones, preguntas con sus respuestas y las posibles acciones que SARA pueda realizar."""
@@ -163,22 +170,61 @@ def encontrar_pregunta_similar(pregunta, memoria):
     
     return mejor_coincidencia
 
+def web_scraping(query, num_results=10): 
+    search_results = list(search(query, num_results=num_results))  # Convertir a lista para indexar
+    return search_results
+
 def buscar_en_internet(pregunta): # Si una pregunta no es encontrada en la base de datos la busca. 
     """En el caso de que el usuario pregunte algo que SARA no sabe lo busca en internet, si lo encuentra devuelve la respuesta, en caso contrario avisa y devuelve un falso para no guardar la respuesta. """
-    url = f"https://www.google.com/search?q={pregunta.replace(' ', '+')}"
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers)
+    urls = web_scraping(pregunta)
+
+    if not urls:
+        return "No encontré información en la web."
     
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, "html.parser")
-        respuesta = soup.find("span").text if soup.find("span") else "No encontré información exacta."
-        return respuesta
-    else:
-        engine.say("No encontré información en la web.")
-        return False
-    
+    palabras_clave = extraer_palabras_clave(pregunta)  # Dividir la pregunta en palabras clave
+
+    for url in urls:  
+        print(f"Buscando en: {url}")  
+
+        try:
+            html = requests.get(url, timeout=5)  
+            soup = b(html.content, "html.parser")  
+
+            # Buscar todos los párrafos de la página
+            parrafos = soup.find_all("p")
+            mejor_parrafo = ""
+            mejor_puntuacion = 0
+
+            for parrafo in parrafos:
+                texto = parrafo.text.strip()
+                puntuacion = sum(1 for palabra in palabras_clave if palabra in texto.lower())
+
+                # Si tiene más coincidencias y el texto no es muy corto, guardar como mejor respuesta
+                if puntuacion > mejor_puntuacion and len(texto) > 20:
+                    mejor_parrafo = texto
+                    mejor_puntuacion = puntuacion
+
+                # Si encontró un párrafo relevante, lo devuelve
+                if mejor_parrafo:
+                    return mejor_parrafo  
+
+                """# Verificar si el párrafo contiene palabras clave de la pregunta
+                if any(palabra in texto.lower() for palabra in palabras_clave) and len(texto) > 20:
+                    return texto  
+
+            # Si ningún párrafo contiene palabras clave, probar con el primer párrafo largo
+            for parrafo in parrafos:
+                texto = parrafo.text.strip()
+                if len(texto) > 50:  
+                    return texto  """
+
+        except requests.exceptions.RequestException:
+            print(f"Error al acceder a {url}, probando con otra...")
+
+    return "No encontré una respuesta clara en la web."
+
 def responder(texto, memoria): # Funcion para responder preguntas. 
-    intencion = identificar_intencion(texto, memoria)  # Detectar intención
+    intencion = identificar_intencion(texto)  # Detectar intención
 
     if intencion == "pregunta":  # Si es una pregunta, buscar en la base de datos
         respuesta = detectar_pregunta(texto, memoria)
@@ -187,6 +233,8 @@ def responder(texto, memoria): # Funcion para responder preguntas.
         else:
             engine.say("No tengo una respuesta exacta, pero buscaré en internet.")
             respuesta_web = buscar_en_internet(texto)
+            print(f"Respuesta de Google: {respuesta_web}")  # Agrega este print para ver qué obtiene SARA
+
             if respuesta_web:
                 engine.say(respuesta_web)
                 aprender_pregunta(texto, respuesta_web)  # Aprender la respuesta obtenida
@@ -250,32 +298,16 @@ def aprender_pregunta(nueva_pregunta, nueva_respuesta): # Funcion para aprender 
     guardar_memoria(memoria)
     return "He aprendido una nueva pregunta y su respuesta."
 
-def identificar_intencion(texto, memoria): # Funcion para detectar la intencion del usuario. 
-    """Identifica la intencion del usuario, si no es la misma que esta cargada busca coincidencias para que encuentre una similitud a lo solicitado."""
+def identificar_intencion(texto): # Funcion para detectar la intencion del usuario. 
     texto = texto.lower().strip()
-    texto_doc = nlp(texto)
-
-    if texto in memoria["intenciones"]:
-        return texto
-
-    mejor_intencion = "desconocido"
-    mejor_similitud = 0.9  # Aumentamos el umbral para evitar errores
-
-    for categoria, palabras_clave in memoria["intenciones"].items():
-        for palabra in palabras_clave:
-            palabra_doc = nlp(palabra)
-            
-            # Evitar error de vectores vacíos
-            if not texto_doc.has_vector or not palabra_doc.has_vector:
-                continue
-
-            similitud = texto_doc.similarity(palabra_doc)
-
-            if similitud > mejor_similitud:
-                mejor_similitud = similitud
-                mejor_intencion = categoria
     
-    return mejor_intencion
+    # Convertir texto a vector numérico
+    X_test = vectorizador.transform([texto])
+    
+    # Hacer predicción
+    intencion_predicha = modelo.predict(X_test)[0]
+    
+    return intencion_predicha
 
 def ejecutar_accion(texto, memoria): # Ejecutar una accion en caso de que SARA lo detecte.
     """Se le puede pedir a SARA que ejecute algun comando predeterminado, con esta funcion ella lo ejecutara."""
@@ -290,3 +322,13 @@ def ejecutar_accion(texto, memoria): # Ejecutar una accion en caso de que SARA l
 
     return "No tengo una acción programada para eso."
 
+def extraer_palabras_clave(pregunta):
+    stop_words = set(stopwords.words("spanish"))  # Cargar palabras vacías en español
+    palabras = pregunta.lower().split()  # Convertir en lista de palabras    
+    palabras_clave = [palabra for palabra in palabras if palabra not in stop_words] # Filtrar palabras irrelevantes
+    return palabras_clave
+
+"""pregunta="como se llama el primer perro en ir al espacio"
+
+web_scraping(pregunta)
+print(buscar_en_internet(pregunta))"""

@@ -1,132 +1,435 @@
 {
     "preguntas_respuestas": {
         "¿Quién eres?": {
-            "preguntas": ["quién eres", "quién sos", "cómo te llamas", "qué eres", "qué representas"],
-            "respuestas": ["Soy SARA, tu asistente virtual.", "Me llamo SARA, y estoy aquí para ayudarte."]
+            "preguntas": [
+                "quién eres",
+                "quién sos",
+                "cómo te llamas",
+                "qué eres",
+                "qué representas"
+            ],
+            "respuestas": [
+                "Soy SARA, tu asistente virtual.",
+                "Me llamo SARA, y estoy aquí para ayudarte."
+            ]
         },
         "¿Qué puedes hacer?": {
-            "preguntas": ["qué puedes hacer", "qué sabes hacer"],
-            "respuestas": ["Puedo responder preguntas, ejecutar comandos y ayudarte con tareas."]
+            "preguntas": [
+                "qué puedes hacer",
+                "qué sabes hacer"
+            ],
+            "respuestas": [
+                "Puedo responder preguntas, ejecutar comandos y ayudarte con tareas."
+            ]
         },
         "¿Qué es Python?": {
-            "preguntas": ["qué es Python", "qué significa Python", "definición de Python"],
-            "respuestas": ["Python es un lenguaje de programación de alto nivel que se utiliza para desarrollar aplicaciones web, software, análisis de datos, inteligencia artificial y más."]
+            "preguntas": [
+                "qué es Python",
+                "qué significa Python",
+                "definición de Python"
+            ],
+            "respuestas": [
+                "Python es un lenguaje de programación de alto nivel que se utiliza para desarrollar aplicaciones web, software, análisis de datos, inteligencia artificial y más."
+            ]
         },
         "¿Cómo puedo aprender a programar?": {
-            "preguntas": ["cómo aprender a programar", "cómo empezar en programación", "maneras de aprender programación"],
-            "respuestas": ["Puedes empezar con tutoriales en línea, leer libros de introducción a la programación y practicar creando proyectos pequeños."]
+            "preguntas": [
+                "cómo aprender a programar",
+                "cómo empezar en programación",
+                "maneras de aprender programación"
+            ],
+            "respuestas": [
+                "Puedes empezar con tutoriales en línea, leer libros de introducción a la programación y practicar creando proyectos pequeños."
+            ]
         },
         "¿Qué es la inteligencia artificial?": {
-            "preguntas": ["qué es inteligencia artificial", "qué es la AI", "qué significa inteligencia artificial"],
-            "respuestas": ["La inteligencia artificial es el campo de estudio que se centra en crear sistemas que pueden realizar tareas que requieren inteligencia humana, como reconocimiento de voz, procesamiento de lenguaje natural, etc."]
+            "preguntas": [
+                "qué es inteligencia artificial",
+                "qué es la AI",
+                "qué significa inteligencia artificial"
+            ],
+            "respuestas": [
+                "La inteligencia artificial es el campo de estudio que se centra en crear sistemas que pueden realizar tareas que requieren inteligencia humana, como reconocimiento de voz, procesamiento de lenguaje natural, etc."
+            ]
         },
         "¿Quién es Alan Turing?": {
-            "preguntas": ["quién es Alan Turing", "quién fue Alan Turing", "historia de Alan Turing"],
-            "respuestas": ["Alan Turing fue un matemático y lógico británico, considerado uno de los padres de la informática moderna y la inteligencia artificial."]
+            "preguntas": [
+                "quién es Alan Turing",
+                "quién fue Alan Turing",
+                "historia de Alan Turing"
+            ],
+            "respuestas": [
+                "Alan Turing fue un matemático y lógico británico, considerado uno de los padres de la informática moderna y la inteligencia artificial."
+            ]
         },
         "¿Qué es el aprendizaje automático?": {
-            "preguntas": ["qué es el aprendizaje automático", "qué significa machine learning", "qué es ML"],
-            "respuestas": ["El aprendizaje automático es una rama de la inteligencia artificial que permite a las máquinas aprender de datos y mejorar su rendimiento sin ser programadas explícitamente."]
+            "preguntas": [
+                "qué es el aprendizaje automático",
+                "qué significa machine learning",
+                "qué es ML"
+            ],
+            "respuestas": [
+                "El aprendizaje automático es una rama de la inteligencia artificial que permite a las máquinas aprender de datos y mejorar su rendimiento sin ser programadas explícitamente."
+            ]
         },
         "¿Qué es el Big Bang?": {
-            "preguntas": ["qué es el Big Bang", "cómo se originó el universo", "qué explica la teoría del Big Bang"],
-            "respuestas": ["El Big Bang es la teoría científica que describe el origen del universo como una expansión desde un estado extremadamente caliente y denso hace unos 13.8 mil millones de años."]
+            "preguntas": [
+                "qué es el Big Bang",
+                "cómo se originó el universo",
+                "qué explica la teoría del Big Bang"
+            ],
+            "respuestas": [
+                "El Big Bang es la teoría científica que describe el origen del universo como una expansión desde un estado extremadamente caliente y denso hace unos 13.8 mil millones de años."
+            ]
         },
         "¿Quién fue Isaac Newton?": {
-            "preguntas": ["quién fue Isaac Newton", "qué hizo Isaac Newton", "descubrimientos de Newton"],
-            "respuestas": ["Isaac Newton fue un físico y matemático inglés, famoso por sus leyes del movimiento y la ley de la gravitación universal, que sentaron las bases de la física clásica."]
+            "preguntas": [
+                "quién fue Isaac Newton",
+                "qué hizo Isaac Newton",
+                "descubrimientos de Newton"
+            ],
+            "respuestas": [
+                "Isaac Newton fue un físico y matemático inglés, famoso por sus leyes del movimiento y la ley de la gravitación universal, que sentaron las bases de la física clásica."
+            ]
         },
         "¿Cuántos planetas hay en el sistema solar?": {
-            "preguntas": ["cuántos planetas hay en el sistema solar", "qué planetas hay en el sistema solar", "lista de planetas del sistema solar"],
-            "respuestas": ["En el sistema solar hay ocho planetas: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno."]
+            "preguntas": [
+                "cuántos planetas hay en el sistema solar",
+                "qué planetas hay en el sistema solar",
+                "lista de planetas del sistema solar"
+            ],
+            "respuestas": [
+                "En el sistema solar hay ocho planetas: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno."
+            ]
         },
         "¿Qué es el ADN?": {
-            "preguntas": ["qué es el ADN", "qué significa ADN", "cuál es la función del ADN"],
-            "respuestas": ["El ADN (ácido desoxirribonucleico) es una molécula que contiene las instrucciones genéticas necesarias para el desarrollo y funcionamiento de todos los organismos vivos."]
+            "preguntas": [
+                "qué es el ADN",
+                "qué significa ADN",
+                "cuál es la función del ADN"
+            ],
+            "respuestas": [
+                "El ADN (ácido desoxirribonucleico) es una molécula que contiene las instrucciones genéticas necesarias para el desarrollo y funcionamiento de todos los organismos vivos."
+            ]
         },
         "¿Qué es la gravedad?": {
-            "preguntas": ["qué es la gravedad", "cómo funciona la gravedad", "qué significa la fuerza de gravedad"],
-            "respuestas": ["La gravedad es la fuerza de atracción que tienen los cuerpos debido a su masa. La Tierra ejerce gravedad, lo que mantiene todo sobre su superficie."]
+            "preguntas": [
+                "qué es la gravedad",
+                "cómo funciona la gravedad",
+                "qué significa la fuerza de gravedad"
+            ],
+            "respuestas": [
+                "La gravedad es la fuerza de atracción que tienen los cuerpos debido a su masa. La Tierra ejerce gravedad, lo que mantiene todo sobre su superficie."
+            ]
+        },
+        "cuál es la capital de buenos aires": {
+            "preguntas": [
+                "cuál es la capital de buenos aires"
+            ],
+            "respuestas": [
+                "No encontré una respuesta en la web."
+            ]
+        },
+        "cuál es la capital de argentina": {
+            "preguntas": [
+                "cuál es la capital de argentina"
+            ],
+            "respuestas": [
+                "No encontré una respuesta exacta en la web."
+            ]
+        },
+        "quién fue cristóbal colón": {
+            "preguntas": [
+                "quién fue cristóbal colón"
+            ],
+            "respuestas": [
+                "Cristóbal Colón (¿1451?–Valladolid, 20 de mayo de 1506) fue un navegante y gobernante de las Indias Occidentales, al servicio de la Corona de Castilla, que encabezó el denominado Descubrimiento de América en 1492, lo que abrió las puertas a la exploración y conquista de este continente por parte de los europeos. Sus orígenes son discutidos, aunque según la hipótesis más extendida nació en Génova,[n. 1]​[3]​[4]​ posiblemente el 31 de octubre de 1451.[5]​"
+            ]
         }
     },
     "intenciones": {
-        "pregunta": ["qué", "cómo", "por qué", "cuándo", "dónde", "quién", "cuál", "cuánto", "quienes", "puedo", "debería"],
-        "comando": ["abre", "reproduce", "enciende", "apaga", "bloquea", "busca", "inicia", "configura", "ajusta", "activa", "desactiva", "cambia", "instala"],
-        "saludo": ["hola", "buen día", "qué tal", "buenas tardes", "buenas noches", "hey", "saludos", "qué onda", "cómo estás"],
-        "despedida": ["chau", "adiós", "hasta luego", "nos vemos", "hasta la próxima", "me retiro", "que tengas un buen día"],
-        "alago": ["gracias", "muy bien", "me gusta", "eres genial", "qué bueno", "excelente", "increíble", "maravilloso", "fantástico", "qué bonito"],
-        "negacion": ["no", "nunca", "jamás", "negativo", "para nada", "de ninguna manera"],
-        "afirmacion": ["sí", "claro", "por supuesto", "efectivamente", "correcto", "exacto"],
-        "emocion": ["estoy feliz", "me siento triste", "estoy enojado", "tengo miedo", "estoy emocionado", "me siento ansioso"],
-        "ayuda": ["ayúdame", "necesito asistencia", "no sé qué hacer", "me puedes ayudar", "explícame esto"],
-        "tiempo": ["qué hora es", "qué día es hoy", "cuál es la fecha", "qué clima hace", "va a llover hoy"],
-        "chiste": ["cuéntame un chiste", "dime algo gracioso", "hazme reír", "sabes algún chiste"],
-        "noticia": ["qué noticias hay hoy", "infórmame sobre las noticias", "resumen de noticias", "cuáles son las noticias del día"],
-        "recomendacion": ["recomiéndame una película", "qué libro debería leer", "qué serie me sugieres ver", "dime una buena canción para escuchar"],
-        "traduccion": ["cómo se dice esto en inglés", "tradúceme esto", "dime la traducción de esta palabra"],
-        "calculo": ["cuánto es", "resuelve esto", "haz este cálculo", "cuál es el resultado de esto"],
-        "consejo": ["dame un consejo", "qué harías en mi lugar", "qué me recomiendas hacer"]
+        "pregunta": [
+            "qué",
+            "cómo",
+            "por qué",
+            "cuándo",
+            "dónde",
+            "quién",
+            "cuál",
+            "cuánto",
+            "quienes",
+            "puedo",
+            "debería"
+        ],
+        "comando": [
+            "abre",
+            "reproduce",
+            "enciende",
+            "apaga",
+            "bloquea",
+            "busca",
+            "inicia",
+            "configura",
+            "ajusta",
+            "activa",
+            "desactiva",
+            "cambia",
+            "instala"
+        ],
+        "saludo": [
+            "hola",
+            "buen día",
+            "qué tal",
+            "buenas tardes",
+            "buenas noches",
+            "hey",
+            "saludos",
+            "qué onda",
+            "cómo estás"
+        ],
+        "despedida": [
+            "chau",
+            "adiós",
+            "hasta luego",
+            "nos vemos",
+            "hasta la próxima",
+            "me retiro",
+            "que tengas un buen día"
+        ],
+        "alago": [
+            "gracias",
+            "muy bien",
+            "me gusta",
+            "eres genial",
+            "qué bueno",
+            "excelente",
+            "increíble",
+            "maravilloso",
+            "fantástico",
+            "qué bonito"
+        ],
+        "negacion": [
+            "no",
+            "nunca",
+            "jamás",
+            "negativo",
+            "para nada",
+            "de ninguna manera"
+        ],
+        "afirmacion": [
+            "sí",
+            "claro",
+            "por supuesto",
+            "efectivamente",
+            "correcto",
+            "exacto"
+        ],
+        "emocion": [
+            "estoy feliz",
+            "me siento triste",
+            "estoy enojado",
+            "tengo miedo",
+            "estoy emocionado",
+            "me siento ansioso"
+        ],
+        "ayuda": [
+            "ayúdame",
+            "necesito asistencia",
+            "no sé qué hacer",
+            "me puedes ayudar",
+            "explícame esto"
+        ],
+        "tiempo": [
+            "qué hora es",
+            "qué día es hoy",
+            "cuál es la fecha",
+            "qué clima hace",
+            "va a llover hoy"
+        ],
+        "chiste": [
+            "cuéntame un chiste",
+            "dime algo gracioso",
+            "hazme reír",
+            "sabes algún chiste"
+        ],
+        "noticia": [
+            "qué noticias hay hoy",
+            "infórmame sobre las noticias",
+            "resumen de noticias",
+            "cuáles son las noticias del día"
+        ],
+        "recomendacion": [
+            "recomiéndame una película",
+            "qué libro debería leer",
+            "qué serie me sugieres ver",
+            "dime una buena canción para escuchar"
+        ],
+        "traduccion": [
+            "cómo se dice esto en inglés",
+            "tradúceme esto",
+            "dime la traducción de esta palabra"
+        ],
+        "calculo": [
+            "cuánto es",
+            "resuelve esto",
+            "haz este cálculo",
+            "cuál es el resultado de esto"
+        ],
+        "consejo": [
+            "dame un consejo",
+            "qué harías en mi lugar",
+            "qué me recomiendas hacer"
+        ]
     },
     "acciones": {
         "Abrir Chrome": {
-            "comandos": ["abre chrome", "abrir google chrome", "iniciar chrome"],
-            "ejecutar": ["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"]
+            "comandos": [
+                "abre chrome",
+                "abrir google chrome",
+                "iniciar chrome"
+            ],
+            "ejecutar": [
+                "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+            ]
         },
         "Abrir Explorador de Archivos": {
-            "comandos": ["abre explorador", "abrir archivos", "explorador de archivos"],
-            "ejecutar": ["explorer.exe"]
+            "comandos": [
+                "abre explorador",
+                "abrir archivos",
+                "explorador de archivos"
+            ],
+            "ejecutar": [
+                "explorer.exe"
+            ]
         },
         "Abrir Configuración": {
-            "comandos": ["abre configuración", "ajustes", "configuración del sistema"],
-            "ejecutar": ["ms-settings:"]
+            "comandos": [
+                "abre configuración",
+                "ajustes",
+                "configuración del sistema"
+            ],
+            "ejecutar": [
+                "ms-settings:"
+            ]
         },
         "Abrir Administrador de Tareas": {
-            "comandos": ["abre el administrador de tareas", "gestor de procesos", "task manager"],
-            "ejecutar": ["taskmgr.exe"]
+            "comandos": [
+                "abre el administrador de tareas",
+                "gestor de procesos",
+                "task manager"
+            ],
+            "ejecutar": [
+                "taskmgr.exe"
+            ]
         },
         "Abrir Bloc de Notas": {
-            "comandos": ["abre el bloc de notas", "abrir notas", "inicia el bloc de notas"],
-            "ejecutar": ["notepad.exe"]
+            "comandos": [
+                "abre el bloc de notas",
+                "abrir notas",
+                "inicia el bloc de notas"
+            ],
+            "ejecutar": [
+                "notepad.exe"
+            ]
         },
         "Abrir Calculadora": {
-            "comandos": ["abre la calculadora", "abrir calculadora", "iniciar calculadora"],
-            "ejecutar": ["calc.exe"]
+            "comandos": [
+                "abre la calculadora",
+                "abrir calculadora",
+                "iniciar calculadora"
+            ],
+            "ejecutar": [
+                "calc.exe"
+            ]
         },
         "Abrir Word": {
-            "comandos": ["abre word", "abrir microsoft word", "documentos de word"],
-            "ejecutar": ["C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE"]
+            "comandos": [
+                "abre word",
+                "abrir microsoft word",
+                "documentos de word"
+            ],
+            "ejecutar": [
+                "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE"
+            ]
         },
         "Abrir Excel": {
-            "comandos": ["abre excel", "abrir microsoft excel", "hojas de cálculo"],
-            "ejecutar": ["C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE"]
+            "comandos": [
+                "abre excel",
+                "abrir microsoft excel",
+                "hojas de cálculo"
+            ],
+            "ejecutar": [
+                "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE"
+            ]
         },
         "Abrir PowerPoint": {
-            "comandos": ["abre powerpoint", "abrir presentaciones", "microsoft powerpoint"],
-            "ejecutar": ["C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE"]
+            "comandos": [
+                "abre powerpoint",
+                "abrir presentaciones",
+                "microsoft powerpoint"
+            ],
+            "ejecutar": [
+                "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE"
+            ]
         },
         "Abrir Paint": {
-            "comandos": ["abre paint", "abrir microsoft paint", "editar imagen"],
-            "ejecutar": ["mspaint.exe"]
+            "comandos": [
+                "abre paint",
+                "abrir microsoft paint",
+                "editar imagen"
+            ],
+            "ejecutar": [
+                "mspaint.exe"
+            ]
         },
         "Abrir Terminal": {
-            "comandos": ["abre terminal", "abrir símbolo del sistema", "cmd"],
-            "ejecutar": ["cmd.exe"]
+            "comandos": [
+                "abre terminal",
+                "abrir símbolo del sistema",
+                "cmd"
+            ],
+            "ejecutar": [
+                "cmd.exe"
+            ]
         },
         "Apagar la computadora": {
-            "comandos": ["apagar el ordenador", "apagar la pc", "shutdown"],
-            "ejecutar": ["shutdown /s /t 10"]
+            "comandos": [
+                "apagar el ordenador",
+                "apagar la pc",
+                "shutdown"
+            ],
+            "ejecutar": [
+                "shutdown /s /t 10"
+            ]
         },
         "Reiniciar la computadora": {
-            "comandos": ["reiniciar la pc", "reinicia el ordenador", "reboot"],
-            "ejecutar": ["shutdown /r /t 10"]
+            "comandos": [
+                "reiniciar la pc",
+                "reinicia el ordenador",
+                "reboot"
+            ],
+            "ejecutar": [
+                "shutdown /r /t 10"
+            ]
         },
         "Cerrar sesión": {
-            "comandos": ["cerrar sesión", "salir del usuario"],
-            "ejecutar": ["shutdown -l"]
+            "comandos": [
+                "cerrar sesión",
+                "salir del usuario"
+            ],
+            "ejecutar": [
+                "shutdown -l"
+            ]
         },
         "Bloquear pantalla": {
-            "comandos": ["bloquear el equipo", "bloquea la pantalla", "lock screen"],
-            "ejecutar": ["rundll32.exe user32.dll,LockWorkStation"]
+            "comandos": [
+                "bloquear el equipo",
+                "bloquea la pantalla",
+                "lock screen"
+            ],
+            "ejecutar": [
+                "rundll32.exe user32.dll,LockWorkStation"
+            ]
         }
     }
 }
